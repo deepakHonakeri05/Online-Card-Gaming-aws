@@ -1,3 +1,9 @@
+/* Initailise the AWS 
+    - Region
+    - bucket name (Very Important!!!!!!)
+    - API version 
+*/
+
 var 
     AWS = require("aws-sdk"),
     S3API = new AWS.S3({
@@ -6,6 +12,8 @@ var
     }),
     FS = require("fs"),
     bucket_name_str = "dragoncardgame";
+
+//converts the HTML/Javascript/png files to binary before uploading
 
 
 function uploadItemAsBinary(key_name_str, content_type_str, bin){
@@ -22,21 +30,29 @@ function uploadItemAsBinary(key_name_str, content_type_str, bin){
 }
 
 (function init(){
+
+    //Upload all files to the File Tree of AWS S3 from cloud9 console
+
+    //upload  Javascript Files
+
     var config_bin = FS.readFileSync("website/config.js");
     uploadItemAsBinary("config.js", "application/javascript", config_bin);
 
     var jquery_js_bin = FS.readFileSync("website/jquery-3.4.0.min.js");
     uploadItemAsBinary("jquery-3.4.0.min.js", "application/javascript", jquery_js_bin);
 
+    //upload  PNG Files
     var sparky_bin = FS.readFileSync("website/images/sparky.png");
     uploadItemAsBinary("sparky.png", "image/png", sparky_bin);
 
     var tallie_bin = FS.readFileSync("website/images/tallie.png");
     uploadItemAsBinary("tallie.png", "image/png", tallie_bin);
 
+    //upload  HTML Files
     var index_html_bin = FS.readFileSync("website/index.html");
     uploadItemAsBinary("index.html", "text/html", index_html_bin);
 
+    //upload  CSS Files and so on..........
     var main_css_bin = FS.readFileSync("website/main.css");
     uploadItemAsBinary("main.css", "text/css", main_css_bin);
         

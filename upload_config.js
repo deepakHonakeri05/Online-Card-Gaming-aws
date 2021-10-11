@@ -1,3 +1,9 @@
+/* Initailise the AWS 
+    - Region
+    - bucket name (Very Important!!!!!!)
+    - API version 
+*/
+
 var 
     AWS = require("aws-sdk"),
     S3API = new AWS.S3({
@@ -6,6 +12,8 @@ var
     }),
     FS = require("fs"),
     bucket_name_str = "dragoncardgame";
+
+//converts the HTML/Javascript/png files to binary before uploading
 
 
 function uploadItemAsBinary(key_name_str, content_type_str, bin){
@@ -20,6 +28,12 @@ function uploadItemAsBinary(key_name_str, content_type_str, bin){
         console.log(error, data);
     });
 }
+
+
+/*  Init function sets the 
+    - file path
+    - file names on the cloud9 platform
+*/
 
 
 (function init(){

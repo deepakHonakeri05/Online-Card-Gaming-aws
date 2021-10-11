@@ -1,9 +1,24 @@
+/* Initailise the AWS 
+    - Region
+    - bucket name (Very Important!!!!!!)
+    - API version 
+*/
+
 var
     AWS = require("aws-sdk"),
     DDB = new AWS.DynamoDB({
         apiVersion: "2012-08-10",
         region: "us-east-1"
     });
+
+/*
+
+    I am using batchWriteItem() method to load data faster compared to adding data one-by-one, which would have taken a lot of time!
+    
+    The process of loading the data is same for all the following tables.
+
+*/
+
 function pushToDragonStatsTable1(){
     var 
         dragon = {},
@@ -53,7 +68,7 @@ function pushToDragonStatsTable1(){
             "dragon_stats": dragon_formatted_arr.reverse()
         }
     };
-    return DDB.batchWriteItem(params).promise();
+    return DDB.batchWriteItem(params).promise();        //Faster write into the dynamodb table
 }
 
 function pushToDragonStatsTable2(){
@@ -105,7 +120,7 @@ function pushToDragonStatsTable2(){
             "dragon_stats": dragon_formatted_arr.reverse()
         }
     };
-    return DDB.batchWriteItem(params).promise();
+    return DDB.batchWriteItem(params).promise();        //Faster write into the dynamodb table
 }
 
 function pushToDragonCurrentPowerTable(){
@@ -220,6 +235,8 @@ function pushToDragonFamilyTable(){
     };
     return DDB.batchWriteItem(params).promise();
 }
+
+// Execution of the functions
 
 (async function seed(){
     console.time("HowFastWasThat");

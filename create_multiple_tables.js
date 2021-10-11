@@ -1,9 +1,17 @@
+/* Initailise the AWS 
+    - Region
+    - bucket name (Very Important!!!!!!)
+    - API version 
+*/
+
 var 
     AWS = require("aws-sdk"),                       
     DDB = new AWS.DynamoDB({
         apiVersion: "2012-08-10",
         region: "us-east-1"
     });                                              
+
+//create Dragon stats table
 
 function createTheDragonStatsTable(){
     var 
@@ -21,6 +29,9 @@ function createTheDragonStatsTable(){
         };
      return DDB.createTable(params).promise();
 }
+
+//create Dragon Current power table
+
 function createTheDragonCurrentPowerTable(){
     var 
         params = {
@@ -37,6 +48,9 @@ function createTheDragonCurrentPowerTable(){
         };
     return DDB.createTable(params).promise();
 }
+
+//create Dragon Bonus Attack table
+
 function createTheDragonBonusAttackTable(){
     var 
         params = {
@@ -59,6 +73,9 @@ function createTheDragonBonusAttackTable(){
         };
     return DDB.createTable(params).promise();
 }
+
+//create Dragon Family  table
+
 function createTheDragonFamilyTable(){
     var 
         params = {
@@ -76,6 +93,7 @@ function createTheDragonFamilyTable(){
     return DDB.createTable(params).promise();
 }
 
+// Execution of the  functions
 
 (async function createAllTables(){
     console.time("HowFastWasThat");
