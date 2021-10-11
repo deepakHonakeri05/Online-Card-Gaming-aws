@@ -1,4 +1,4 @@
-# Online Card Gamin Web App - AWS
+# Online Card Gaming Web App - AWS
 
 Check live Demo :
 
