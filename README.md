@@ -1,9 +1,5 @@
 # Online Card Gaming Web App - AWS
 
-Check live Demo :
-
-http://dragoncardgame.s3-website-us-east-1.amazonaws.com
-
 ## Overview
 
 The is an online card gaming website that features dragon cards. It’s a static website hosted on amazon AWS S3. The website is built using HTML5, CSS3, and Node.js. It leverages Amazon’s AWS S3, Lambda function, DynamoDB and CORS enabled Amazon API Gateway.
